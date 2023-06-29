@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>New game</h1>
+  <ul class="list-group list-group-horizontal">
+  <% @letters.each do |letter| %>
+    <li class="list-group-item border border-white"><button class="btn btn-primary"><strong><%= letter %></strong></button></li>
+    <% end %>
+  </ul>
+  <p>Longest word?</p>
+  <form action="/score" data-turbo="false" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="hidden" name="letters" value="<%=@letters%>">
+    <input type="hidden" name="time_start" value="<%=@time_start%>">
+    <input type="text" name="word" class="form-control w-50">
+    <input type="submit" class="btn btn-primary">
+
+  </form>
+</div>
